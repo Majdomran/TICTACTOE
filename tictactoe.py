@@ -25,15 +25,12 @@ def ärBrädanFull(bräda):
     else:
         return True
 
-def ärVinnare(b, l):
-    return ((b[1] == l and b[2] == l and b[3] == l) or
-    (b[4] == l and b[5] == l and b[6] == l) or
-    (b[7] == l and b[8] == l and b[9] == l) or
-    (b[1] == l and b[4] == l and b[7] == l) or
-    (b[2] == l and b[5] == l and b[8] == l) or
-    (b[3] == l and b[6] == l and b[9] == l) or
-    (b[1] == l and b[5] == l and b[9] == l) or
-    (b[3] == l and b[5] == l and b[7] == l))
+def ärVinnare(spelplan, symbol):
+    vinnande_kombinationer = [
+        [1, 2, 3], [4, 5, 6], [7, 8, 9],  
+        [1, 4, 7], [2, 5, 8], [3, 6, 9],  
+        [1, 5, 9], [3, 5, 7]              
+    ]
 
 def spelarDrag():
     fortsätt = True
