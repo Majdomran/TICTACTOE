@@ -1,11 +1,12 @@
-bräda = [' ' for x in range(10)]
+bräda = [' ' for x in range(10)] # EN LISTA
 
 def sättInBokstav(bokstav, pos):
     bräda[pos] = bokstav
 
-def platsÄrLedig(pos):
-    return bräda[pos] == ' '
+def platsÄrLedig(pos): # FUNKTIONEN FÖR FÖR BRÄDDAN OM DEN ÄR LEDIG
+    return bräda[pos] == ' ' 
 
+# DETTA ÄR FUNKTIONEN FÖR SPELET UTSENDE
 def skrivUtBräda(bräda):
     print('   |   |   ')
     print(' ' + bräda[1] + ' | ' + bräda[2] + ' | ' + bräda[3])
@@ -19,19 +20,21 @@ def skrivUtBräda(bräda):
     print(' ' + bräda[7] + ' | ' + bräda[8] + ' | ' + bräda[9])
     print('   |   |   ')
 
+# FUNKTIONEN OM BREDDAN ÄR UPTAGEN
 def ärBrädanFull(bräda):
     if bräda.count(' ') > 1:
         return False
     else:
         return True
 
+# DETTA ÄR KOMBANATIONER FÖR DATORN ATT VINNA PÅ 
 def ärVinnare(spelplan, symbol):
     vinnande_kombinationer = [
         [1, 2, 3], [4, 5, 6], [7, 8, 9],  
         [1, 4, 7], [2, 5, 8], [3, 6, 9],  
         [1, 5, 9], [3, 5, 7]              
     ]
-
+# FUNKTIONEN FÖR SPELET NÄR DEN KÖRS OCH GÖR ATT DEN FUNKAR 
 def spelarDrag():
     fortsätt = True
     while fortsätt:
@@ -50,7 +53,8 @@ def spelarDrag():
         except:
             print('Vänligen skriv ett nummer')
 
-def datorDrag():
+# DATORNS KOMBENATIONER 
+def datorDrag(): 
     möjligaDrag = [x for x , bokstav in enumerate(bräda) if bokstav == ' ' and x != 0  ]
     drag = 0
 
@@ -84,12 +88,13 @@ def datorDrag():
         drag = slumpmässigtVal(öppnaKanter)
         return drag
 
-def slumpmässigtVal(lista):
+def slumpmässigtVal(lista): # SLUMPMÄSSAR FÖR LISTAN
     import random
     ln = len(lista)
     r = random.randrange(0,ln)
     return lista[r]
 
+# DETTA ÄR NÄR SPELET KÖRS OCH VISAR STEG OM VART DATORN LA SIN X ELLER O
 def huvud():
     print("Välkommen till spelet!")
     skrivUtBräda(bräda)
@@ -117,6 +122,7 @@ def huvud():
     if ärBrädanFull(bräda):
         print("Oavgjort")
 
+# LOOPEN FÖR OM MAN VILL KÖRA SPELET IGEN
 while True:
     x = input("Vill du spela? Tryck y för ja eller n för nej (y/n)\n")
     if x.lower() == 'y':
